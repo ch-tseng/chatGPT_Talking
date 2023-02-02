@@ -7,7 +7,7 @@ prepare in advance
 4. Apply for your Google Cloud Credentials json file.
 5. Apply for your Open API Key: https://platform.openai.com/account/api-keys
 
-Update the config.ini file, then you can try to run these 3 files:
+Modify the parameters in config.ini file, then you can try to run these 3 files:
   1. t2t.py --> use text to talk
   2. t2s.py --> input text, reply with voice
   3. s2s.py --> chat with voice
