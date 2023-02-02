@@ -7,7 +7,7 @@ prepare in advance
 4. Apply for your Google Cloud Credentials json file and place it in the execution directory.
 5. Apply for your Open API Key: https://platform.openai.com/account/api-keys
 
-There are 3 modes of talking:
-t2t.py --> use text to talk
-t2s.py --> input text, reply with voice
-s2s.py --> chat with voice
+There are 3 modes of talking with ChatGPT:
+  1. t2t.py --> use text to talk
+  2. t2s.py --> input text, reply with voice
+  3. s2s.py --> chat with voice
