@@ -14,7 +14,7 @@ Steps:
     - pip install --upgrade google-cloud-texttospeech
 
 7. Modify the parameters in config.ini file, then you can try to run these 3 files:
-  a. t2t.py --> use text to talk
-  b. t2s.py --> input text, reply with voice
-  c. s2s.py --> chat with voice
+  - t2t.py: use text to talk
+  - t2s.py: input text, reply with voice
+  - s2s.py: chat with voice
 
