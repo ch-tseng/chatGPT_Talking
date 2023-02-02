@@ -1,4 +1,4 @@
-# chatGPT_Talking (ChatGPT + Google T2S + Google S2T)
+# ChatGPT_Talking (ChatGPT + Google T2S + Google S2T)
 
 prepare in advance
 1. A PC that can execute Python programs, or a Raspberry Pi.
