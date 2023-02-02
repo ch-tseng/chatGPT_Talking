@@ -2,14 +2,19 @@
 from libT2S import T2S
 import openai
 import os, random
+from configparser import ConfigParser
+import ast
 
-model_engine = "text-davinci-003"
-openai.api_key = "xxxxxxxxx"
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="chatGPT.json"
+cfg = ConfigParser()
+cfg.read("config.ini",encoding="utf-8")
+
+model_engine = cfg.get("OpenAI", "model_engine")
+openai.api_key = cfg.get("OpenAI", "API")
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"]=cfg.get("Google", "GOOGLE_APPLICATION_CREDENTIALS_PATH").replace('\\','/')
 
 gt2s = T2S()
-persons = ['cmn-TW-Wavenet-A', 'cmn-TW-Wavenet-B', 'cmn-TW-Wavenet-C']
-id_person = random.randint(0,2)
+persons = ast.literal_eval(cfg.get("Google", "voices"))
+id_person = random.randint(0,len(persons)-1)
 language_audio = persons[id_person]
 
 #---------------------------------

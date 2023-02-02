@@ -10,14 +10,19 @@ import os, random
 from google.cloud import speech
 import pyaudio
 from six.moves import queue
+from configparser import ConfigParser
+import ast
 
-model_engine = "text-davinci-003"
-openai.api_key = "XXXXXXXXXXXXXXXXXXXXXXXXX"
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="chatGPT.json"
+cfg = ConfigParser()
+cfg.read("config.ini",encoding="utf-8")
+
+model_engine = cfg.get("OpenAI", "model_engine")
+openai.api_key = cfg.get("OpenAI", "API")
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"]=cfg.get("Google", "GOOGLE_APPLICATION_CREDENTIALS_PATH").replace('\\','/')
 
 gt2s = T2S()
-persons = ['cmn-TW-Wavenet-A', 'cmn-TW-Wavenet-B', 'cmn-TW-Wavenet-C']
-id_person = random.randint(0,2)
+persons = ast.literal_eval(cfg.get("Google", "voices"))
+id_person = random.randint(0,len(persons)-1)
 language_audio = persons[id_person]
 
 def GPT(query):
@@ -218,7 +223,7 @@ def listen_print_loop(responses, stream):
             stream.last_transcript_was_final = True
 
             stream._audio_stream.stop_stream()
-            print('\n\n[我想一下].....')
+            print('\n\n[Let me think].....')
             wait = True
             while wait:
                 rtn_txt = GPT(transcript)
@@ -228,7 +233,7 @@ def listen_print_loop(responses, stream):
                 with open('history_s2s.txt', 'a', encoding='UTF-8') as f:
                     f.write('\n' + transcript + '\n' + rtn_txt + '\n ----------------------------------------------- \n')
 
-            print('\n\n[換你說].....')
+            print('\n\n[your turn].....')
             stream._audio_stream.start_stream()
 
 
@@ -255,7 +260,7 @@ def main():
     config = speech.RecognitionConfig(
         encoding=speech.RecognitionConfig.AudioEncoding.LINEAR16,
         sample_rate_hertz=SAMPLE_RATE,
-        language_code="zh-TW",
+        language_code=cfg.get("Google","language_code"),
         max_alternatives=1,
     )
 
