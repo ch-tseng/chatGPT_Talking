@@ -4,7 +4,7 @@ import openai
 import os, random
 
 model_engine = "text-davinci-003"
-openai.api_key = "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"
+openai.api_key = "xxxxxxxxx"
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="chatGPT.json"
 
 gt2s = T2S()
