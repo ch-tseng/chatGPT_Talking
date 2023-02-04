@@ -2,25 +2,6 @@ import google.cloud.texttospeech as tts
 import pygame
 import os
 
-'''
-Google T2S service
------------------------- Voices: 14 ------------------------
-cmn-CN   | cmn-CN-Standard-A        | FEMALE   | 24,000 Hz
-cmn-CN   | cmn-CN-Standard-B        | MALE     | 24,000 Hz
-cmn-CN   | cmn-CN-Standard-C        | MALE     | 24,000 Hz
-cmn-CN   | cmn-CN-Standard-D        | FEMALE   | 24,000 Hz
-cmn-CN   | cmn-CN-Wavenet-A         | FEMALE   | 24,000 Hz
-cmn-CN   | cmn-CN-Wavenet-B         | MALE     | 24,000 Hz
-cmn-CN   | cmn-CN-Wavenet-C         | MALE     | 24,000 Hz
-cmn-CN   | cmn-CN-Wavenet-D         | FEMALE   | 24,000 Hz
-cmn-TW   | cmn-TW-Standard-A        | FEMALE   | 24,000 Hz
-cmn-TW   | cmn-TW-Standard-B        | MALE     | 24,000 Hz
-cmn-TW   | cmn-TW-Standard-C        | MALE     | 24,000 Hz
-cmn-TW   | cmn-TW-Wavenet-A         | FEMALE   | 24,000 Hz
-cmn-TW   | cmn-TW-Wavenet-B         | MALE     | 24,000 Hz
-cmn-TW   | cmn-TW-Wavenet-C         | MALE     | 24,000 Hz
-'''
-
 class T2S:
     def __init__(self):
         print("Google T2S service")
